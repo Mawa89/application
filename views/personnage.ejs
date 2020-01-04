@@ -1,0 +1,19 @@
+<%- include commons/header%>
+    <h1 class="border rounded-lg bg-dark text-white p-2"><%= perso.nom %></h1>
+    <div class="row">
+        <div class="col">
+            <img src="sources/images/<%= perso.nom %>.png" />
+        </div>
+        <div class="col">
+            <img src="sources/images/<%= perso.arme %>.png" />
+            <form action="" method="POST">
+                <select name="arme" onChange="submit()">
+                    <option value="hache" <%= (perso.arme === "hache") ? "selected" : ""%> >hache</option>
+                    <option value="arc" <%= (perso.arme === "arc") ? "selected" : ""%>>arc</option>
+                    <option value="marteau" <%= (perso.arme === "marteau") ? "selected" : ""%>>marteau</option>
+                </select>
+                <input type="hidden" name="perso" value="<%= perso.nom %>" />
+            </form>
+        </div>
+    </div>
+<%- include commons/footer%>

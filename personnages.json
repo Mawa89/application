@@ -1,0 +1,12 @@
+{
+    "perso1": {
+        "nom": "Wawa",
+        "arme": "marteau",
+        "classe": 1
+    },
+    "perso2": {
+        "nom": "HeadHunter",
+        "arme": "arc",
+        "classe": 2
+    }
+}

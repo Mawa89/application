@@ -1,0 +1,52 @@
+<%- include commons/header%>
+    <h1 class="border rounded-lg bg-dark text-white p-2">Mes personnages</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Classe</th>
+            <th scope="col">Arme</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% 
+    var i=0;
+    for(var personnage in mesPersos){ 
+        i++;
+        %>
+        <tr>
+            <td><%= i %></td>
+            <td><a href="personnage?perso=<%= personnage %>"><%= mesPersos[personnage].nom %></a></td>
+            <td>
+            <form method="POST" action="">
+                <select name="classe" onChange="submit()">
+                    <% for(var classe in mesClasses) { %>
+                        <option value ="<%= classe %>" title="<%= mesClasses[classe].description %> "
+                         <%= (mesPersos[personnage].classe === parseInt(classe)) ? "selected" : "" %>>
+                            <%= mesClasses[classe].nom %> 
+                        </option>
+                    <% } %>
+                </select>
+                <input type="hidden" name="perso" value="<%= personnage %>" />
+            </form>
+
+            <% for(var classe in mesClasses) {
+                if(mesPersos[personnage].classe === parseInt(classe)){%>
+                    <a href="classe?nom=<%= classe %>">
+                    modifier
+                    </a>
+                <% } %> 
+            <% } %>
+           
+            </td>
+            <td><%= mesPersos[personnage].arme %></td>
+        </tr>
+    <% } %>
+      
+    </tbody>
+</table>
+
+
+    
+<%- include commons/footer%>
